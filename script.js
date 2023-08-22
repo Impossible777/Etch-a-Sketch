@@ -1,9 +1,20 @@
-
 const container = document.querySelector('#container');
 for (let i = 0; i <16; i++) {
-    const content = document.createElement('div');
-    content.classList.add('boxes')
-    container.appendChild(content);
-
-
+    const minorContent = document.createElement('div')
+    const minorContentId = 'minorContainer' + i;
+    minorContent.setAttribute('id', minorContentId)
+    container.appendChild(minorContent);
+        for (let j=0; j<16; j++) {
+            const content = document.createElement('div');
+            content.classList.add('boxes')
+            minorContent.appendChild(content);
+        }
 }
+
+const hovers = document.querySelectorAll('.boxes')
+
+hovers.forEach(hover => {
+    hover.addEventListener('mouseover', function(){
+        console.log("You hovered!")
+    });
+});
