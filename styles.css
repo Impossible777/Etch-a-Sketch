@@ -1,0 +1,15 @@
+body {
+    display: flex;
+    display: column;
+
+}
+
+#container {
+    display: flex;
+    
+}
+.boxes {
+    border: 2px solid black;
+    width: 20px;
+    height: 10px;
+}
