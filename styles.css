@@ -12,4 +12,9 @@ body {
     border: 2px solid black;
     width: 65px;
     height: 45px;
+    transition-duration: 500ms;
+}
+
+.hovered {
+    background-color: yellow;
 }

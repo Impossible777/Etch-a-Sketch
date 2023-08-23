@@ -14,7 +14,17 @@ for (let i = 0; i <16; i++) {
 const hovers = document.querySelectorAll('.boxes')
 
 hovers.forEach(hover => {
-    hover.addEventListener('mouseover', function(){
-        console.log("You hovered!")
-    });
-});
+    hover.addEventListener('mouseover', transitionYellow)
+})
+
+hovers.forEach(hover =>{
+    hover.addEventListener('click',removeYellow)
+})
+
+function transitionYellow () {
+    this.classList.add('hovered')
+}
+
+function removeYellow () {
+    this.classList.remove('hovered')
+}
