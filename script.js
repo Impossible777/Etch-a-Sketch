@@ -4,13 +4,7 @@ let totalGrid = gridSize * gridSize
 let boxHeight = (500 / gridSize);
 let boxWidth =  (500/gridSize);
 const container = document.querySelector('#container');
-for (let i = 0; i < totalGrid; i++) {
-    const content = document.createElement('div');
-    content.classList.add('boxes')
-    container.appendChild(content);
-    content.style.height = boxHeight + 'px';
-    content.style.width = boxWidth + 'px'
-}
+createGrid(totalGrid, boxHeight, boxWidth)
 
 const hovers = document.querySelectorAll('.boxes')
 
@@ -49,31 +43,23 @@ changeGrid.addEventListener("click", function(){
     let boxHeight = (500 / gridSize);
     let boxWidth =  (500/gridSize);
     const container = document.querySelector('#container');
-    for (let i = 0; i < totalGrid; i++) {
-        const content = document.createElement('div');
-        content.classList.add('boxes')
-        container.appendChild(content);
-        content.style.height = boxHeight + 'px';
-        content.style.width = boxWidth + 'px'
+    createGrid(totalGrid, boxHeight, boxWidth);
 
-
-
-
-        content.addEventListener('mouseover', transitionYellow);
-        content.addEventListener('click', removeYellow);
-    }            
+            
 })
 
 function removeAllDivs() {
     container.innerHTML = '';
 }
 
-function createGrid() {
-    for (let i = 0; i < totalGrid; i++) {
+function createGrid(size, boxHeight, boxWidth) {
+    for (let i = 0; i < size; i++) {
         const content = document.createElement('div');
         content.classList.add('boxes')
         container.appendChild(content);
         content.style.height = boxHeight + 'px';
         content.style.width = boxWidth + 'px'
+        content.addEventListener('mouseover', transitionYellow);
+        content.addEventListener('click', removeYellow);
     }
 }
