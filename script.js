@@ -6,15 +6,6 @@ let boxWidth =  (500/gridSize);
 const container = document.querySelector('#container');
 createGrid(totalGrid, boxHeight, boxWidth)
 
-const hovers = document.querySelectorAll('.boxes')
-
-hovers.forEach(hover => {
-    hover.addEventListener('mouseover', transitionYellow)
-})
-
-hovers.forEach(hover =>{
-    hover.addEventListener('click',removeYellow)
-})
 
 function transitionYellow () {
     if (mouseIsDown) {
