@@ -3,18 +3,48 @@ let gridSize = 16
 let totalGrid = gridSize * gridSize
 let boxHeight = (500 / gridSize);
 let boxWidth =  (500/gridSize);
+let isToggled = false;
+let erase = document.getElementById('delete')
 const container = document.querySelector('#container');
 createGrid(totalGrid, boxHeight, boxWidth)
 
 
+
+erase.addEventListener('click', function() {
+    if (isToggled ===false) {
+        isToggled = true;
+        this.classList.add('delete')
+    } else if (isToggled=== true) {
+        isToggled = false;
+        this.classList.remove('delete')
+    }
+})
+
+
 function transitionYellow () {
-    if (mouseIsDown) {
-    this.classList.add('hovered')
+    if (isToggled ===false) {
+        if (mouseIsDown) {
+        this.classList.remove('white')
+        this.classList.add('hovered')
+        }
+    } else if (isToggled ===true) {
+        if (mouseIsDown) {
+            this.classList.remove('hovered')
+            this.classList.add('white')
+        }
     }
 }
 
-function removeYellow () {
-    this.classList.remove('hovered')
+function click() {
+    if (isToggled ===false) {
+        this.classList.remove('white')
+        this.classList.add('hovered')
+    
+    } else if (isToggled ===true) {
+        this.classList.remove('hovered')
+        this.classList.add('white')
+
+    }
 }
 
 var mouseIsDown = false;
@@ -51,6 +81,9 @@ function createGrid(size, boxHeight, boxWidth) {
         content.style.height = boxHeight + 'px';
         content.style.width = boxWidth + 'px'
         content.addEventListener('mouseover', transitionYellow);
-        content.addEventListener('click', removeYellow);
+        content.addEventListener('click', click);
+        
     }
 }
+
+

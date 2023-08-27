@@ -36,3 +36,11 @@ body {
 #button {
     display: flex;
 }
+
+.delete {
+    background-color: black;
+}
+
+.white {
+    background-color: white;
+}
