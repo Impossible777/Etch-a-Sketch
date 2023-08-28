@@ -6,10 +6,14 @@ let boxWidth =  (500/gridSize);
 let isToggled = false;
 let erase = document.getElementById('delete')
 const container = document.querySelector('#container');
+const changeGrid = document.getElementById("change")
+const clear = document.getElementById('clear')
+const boxes = container.querySelectorAll('.boxes')
 createGrid(totalGrid, boxHeight, boxWidth)
 
 
 
+clear.addEventListener('click', eraseAll)
 erase.addEventListener('click', function() {
     if (isToggled ===false) {
         isToggled = true;
@@ -19,6 +23,17 @@ erase.addEventListener('click', function() {
         this.classList.remove('delete')
     }
 })
+
+function eraseAll () {
+    removeAllDivs();
+    let totalGrid = gridSize * gridSize
+    let boxHeight = (500 / gridSize);
+    let boxWidth =  (500/gridSize);
+    createGrid(totalGrid, boxHeight, boxWidth);
+}
+
+
+
 
 
 function transitionYellow () {
@@ -35,7 +50,7 @@ function transitionYellow () {
     }
 }
 
-function click() {
+function clickToChange() {
     if (isToggled ===false) {
         this.classList.remove('white')
         this.classList.add('hovered')
@@ -51,7 +66,7 @@ var mouseIsDown = false;
 document.addEventListener('mousedown', function(){mouseIsDown = true});
 document.addEventListener('mouseup', function(){mouseIsDown = false});
 
-const changeGrid = document.getElementById("button")
+
 
 changeGrid.addEventListener("click", function(){
     let userInput = prompt("How many squares would you like per side? 100 is the max.")
@@ -81,7 +96,7 @@ function createGrid(size, boxHeight, boxWidth) {
         content.style.height = boxHeight + 'px';
         content.style.width = boxWidth + 'px'
         content.addEventListener('mouseover', transitionYellow);
-        content.addEventListener('click', click);
+        content.addEventListener('click', clickToChange);
         
     }
 }
